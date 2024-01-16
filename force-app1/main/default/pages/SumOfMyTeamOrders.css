@@ -1,0 +1,13 @@
+/* 
+This is the CSS file where you can apply styles for your Visualforce page.
+
+To use these styles in your Visualforce page, you need to link this stylesheet to your Visualforce page.
+Do this by adding :
+<apex:stylesheet value="{!URLFOR($Resource.SumOfmyTeamOrder.css)}"/>
+
+*/
+
+.myStyle {
+    color: #ff0000;
+    font-size: 20px;
+}
