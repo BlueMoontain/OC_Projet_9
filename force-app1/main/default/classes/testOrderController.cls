@@ -4,7 +4,7 @@ public class testOrderController {
         // Create test data
         List<Account> testAccounts = testDataFactory.createAccounts(1);
         Map<Product2, PricebookEntry> testProducts = testDataFactory.createTestProductsAndPricebookEntries(5);
-        List<Order> testOrders = testDataFactory.createOrders(testAccounts);
+        List<Order> testOrders = testDataFactory.createOrders(testAccounts, 1);
         List<OrderItem> testOrderItems = testDataFactory.createOrderItems(testOrders, new List<PricebookEntry>(testProducts.values()), 5);
         
         // Update the status of the test orders to 'Ordered'

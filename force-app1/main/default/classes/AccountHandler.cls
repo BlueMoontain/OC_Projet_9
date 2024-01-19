@@ -58,16 +58,18 @@ public with sharing class AccountHandler {
         // Save the changes
         update accountsToUpdate.values();
     }
-
         // This method updates the Net Amount for each order in the list
         public static void netAmountUpdate(List<Order> listOfOrders, Map<Id, Order> mapOfPreviousOrders) {
             // Iterate over each order in the list
             for (Order currentOrder : listOfOrders) {
-                // Check if TotalAmount and ShipmentCost__c are not null
+            // Check if TotalAmount and ShipmentCost__c are not null
                 if (currentOrder.TotalAmount != null && currentOrder.ShipmentCost__c != null) {
-                    // Calculate the Net Amount for the current order
-                    currentOrder.NetAmount__c = currentOrder.TotalAmount - currentOrder.ShipmentCost__c;
-                }
+                // Calculate the Net Amount for the current order
+                currentOrder.NetAmount__c = currentOrder.TotalAmount - currentOrder.ShipmentCost__c;
+                } else {
+                // Log a debug message if one of the variables is null
+                System.debug('TotalAmount or ShipmentCost__c is null for Order Id: ' + currentOrder.Id);
             }
-        }         
+        }
+    }
 }

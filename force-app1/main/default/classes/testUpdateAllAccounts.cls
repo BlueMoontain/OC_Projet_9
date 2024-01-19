@@ -8,7 +8,7 @@ public class testUpdateAllAccounts {
         List<Account> testAccounts = testDataFactory.createAccounts(1);
         Map<Product2, PricebookEntry> productToPricebookEntry = testDataFactory.createTestProductsAndPricebookEntries(5);
         List<PricebookEntry> testPricebookEntries = productToPricebookEntry.values();
-        List<Order> testOrders = testDataFactory.createOrders(testAccounts);
+        List<Order> testOrders = testDataFactory.createOrders(testAccounts, 1);
         List<OrderItem> testOrderItems = testDataFactory.createOrderItems(testOrders, testPricebookEntries, 5);
         
         // Start the test, call the method to be tested, and stop the test

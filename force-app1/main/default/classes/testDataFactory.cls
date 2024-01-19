@@ -71,25 +71,23 @@ public class testDataFactory {
     }
  
     // Method to create test orders
-    public static List<Order> createOrders(List<Account> accounts) {
-        // Get the ID of the standard price book
+    public static List<Order> createOrders(List<Account> accounts, Integer numOrders) {
         Id standardPricebookId = Test.getStandardPricebookId();
         List<Order> testOrders = new List<Order>();
-        // Create each test order
         for (Account account : accounts) {
-            Order testOrder = new Order(AccountId = account.Id, EffectiveDate = System.today(), Status = 'Draft', Pricebook2Id = standardPricebookId, ShipmentCost__c = 10.0 );
-            testOrders.add(testOrder);
+            for (Integer i = 0; i < numOrders; i++) {
+                Order testOrder = new Order(AccountId = account.Id, EffectiveDate = System.today(), Status = 'Draft', Pricebook2Id = standardPricebookId, ShipmentCost__c = 10.0 );
+                testOrders.add(testOrder);
+            }
         }
-        // Try-catch block
         try {
             insert testOrders;
         } catch (DmlException e) {
             System.debug('Failed to insert test orders: ' + e.getMessage());
         }
-
         return testOrders;
     }
-
+  
     // Method to create test order items
     public static List<OrderItem> createOrderItems(List<Order> orders, List<PricebookEntry> pricebookEntries, Integer numItems) {
         List<OrderItem> orderItems = new List<OrderItem>();
