@@ -44,18 +44,22 @@ public with sharing class AccountHandler {
                         }
                         acc.Chiffre_d_affaire__c += order.TotalAmount;
                     }
-                } else if (prevOrder != null && prevOrder.Status == 'Ordered' && order.Status != 'Ordered') {
-                    // If the order status is changed from 'Ordered' to something else, subtract the order amount from the account turnover
-                    if (order.TotalAmount != null) {
-                        if (acc.Chiffre_d_affaire__c == null) {
-                            acc.Chiffre_d_affaire__c = 0;
-                        }
-                        acc.Chiffre_d_affaire__c -= order.TotalAmount;
-                    }
-                }
+                } 
             }
         }
         // Save the changes
         update accountsToUpdate.values();
     }
+
+        // This method updates the Net Amount for each order in the list
+        public static void netAmountUpdate(List<Order> listOfOrders, Map<Id, Order> mapOfPreviousOrders) {
+            // Iterate over each order in the list
+            for (Order currentOrder : listOfOrders) {
+                // Check if TotalAmount and ShipmentCost__c are not null
+                if (currentOrder.TotalAmount != null && currentOrder.ShipmentCost__c != null) {
+                    // Calculate the Net Amount for the current order
+                    currentOrder.NetAmount__c = currentOrder.TotalAmount - currentOrder.ShipmentCost__c;
+                }
+            }
+        }         
 }

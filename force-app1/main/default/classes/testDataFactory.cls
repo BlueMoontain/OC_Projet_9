@@ -77,7 +77,7 @@ public class testDataFactory {
         List<Order> testOrders = new List<Order>();
         // Create each test order
         for (Account account : accounts) {
-            Order testOrder = new Order(AccountId = account.Id, EffectiveDate = System.today(), Status = 'Draft', Pricebook2Id = standardPricebookId );
+            Order testOrder = new Order(AccountId = account.Id, EffectiveDate = System.today(), Status = 'Draft', Pricebook2Id = standardPricebookId, ShipmentCost__c = 10.0 );
             testOrders.add(testOrder);
         }
         // Try-catch block

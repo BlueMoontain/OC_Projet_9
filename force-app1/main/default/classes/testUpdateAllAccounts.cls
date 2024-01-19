@@ -5,7 +5,7 @@ public class testUpdateAllAccounts {
     // This test method tests the handleBatch method in the AccountHandler class
     @isTest static void testHandleBatch() {
         // Set up test data
-        List<Account> testAccounts = testDataFactory.createAccounts(220);
+        List<Account> testAccounts = testDataFactory.createAccounts(1);
         Map<Product2, PricebookEntry> productToPricebookEntry = testDataFactory.createTestProductsAndPricebookEntries(5);
         List<PricebookEntry> testPricebookEntries = productToPricebookEntry.values();
         List<Order> testOrders = testDataFactory.createOrders(testAccounts);

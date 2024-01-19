@@ -13,7 +13,7 @@ public class testUpdateAccountTurnover {
         
         // Create test orders and order items
         List<Order> testOrders = testDataFactory.createOrders(testAccounts);
-        List<OrderItem> testOrderItems = testDataFactory.createOrderItems(testOrders, new List<PricebookEntry>{testPriceBookEntry}, 10);
+        List<OrderItem> testOrderItems = testDataFactory.createOrderItems(testOrders, new List<PricebookEntry>{testPriceBookEntry}, 160);
         
         // Update the status of the test order
         testOrders[0].Status = 'Ordered';
